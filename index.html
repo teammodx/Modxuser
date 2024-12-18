@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Panel - Coin System</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    .header {
+      background-color: #4CAF50;
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+    }
+    .container {
+      width: 80%;
+      margin: 20px auto;
+    }
+    .card {
+      background: white;
+      margin: 20px 0;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .btn {
+      display: inline-block;
+      padding: 10px 15px;
+      background-color: #4CAF50;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      text-align: center;
+    }
+    .btn:hover {
+      background-color: #45a049;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #4CAF50;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>User Panel</h1>
+  </div>
+
+  <div class="container">
+    <!-- User Info -->
+    <div class="card">
+      <h2>Welcome, [Username]</h2>
+      <p><strong>Current Coin Balance:</strong> <span style="color: green;">100 Coins</span></p>
+    </div>
+
+    <!-- Purchase Coins -->
+    <div class="card">
+      <h3>Purchase Coins</h3>
+      <form action="/purchase" method="POST">
+        <label for="amount">Select Amount:</label>
+        <select id="amount" name="amount">
+          <option value="50">50 Coins - $5</option>
+          <option value="100">100 Coins - $10</option>
+          <option value="200">200 Coins - $20</option>
+        </select>
+        <br><br>
+        <button class="btn" type="submit">Purchase</button>
+      </form>
+    </div>
+
+    <!-- Transaction History -->
+    <div class="card">
+      <h3>Transaction History</h3>
+      <table>
+        <tr>
+          <th>Date</th>
+          <th>Description</th>
+          <th>Amount</th>
+        </tr>
+        <tr>
+          <td>2024-12-10</td>
+          <td>Purchased Coins</td>
+          <td>+50</td>
+        </tr>
+        <tr>
+          <td>2024-12-08</td>
+          <td>Redeemed Service</td>
+          <td>-30</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <footer style="text-align: center; padding: 10px; background-color: #4CAF50; color: white;">
+    &copy; 2024 Coin System
+  </footer>
+</body>
+</html>
