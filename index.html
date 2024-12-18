@@ -3,44 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel</title>
+    <title>User Coin System</title>
     <style>
         body {
             text-align: center;
             font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            transition: background 1s;
         }
 
-        .admin-panel {
+        .container {
             margin: 20px auto;
         }
 
-        input, button {
-            padding: 10px;
-            margin: 5px;
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background: linear-gradient(to right, red, green);
+            color: white;
+            transition: transform 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+        }
+
+        .username {
+            margin-top: 20px;
             font-size: 16px;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
-    <h1>Admin Panel</h1>
-    <div class="admin-panel">
-        <h3>Add Coins to User</h3>
-        <input type="text" id="username" placeholder="Enter Username" />
-        <input type="number" id="coins" placeholder="Enter Coins to Add" />
-        <button onclick="addCoins()">Add Coins</button>
-        <p id="status-message"></p>
+    <h1>Welcome to the Coin System</h1>
+    <div class="container">
+        <h3>Your Coins: <span id="user-coins">10</span></h3>
+        <button onclick="playGame()">Get Result</button>
+        <p id="result-message">Click the button to play!</p>
+        <p class="username">Username: <span id="user-username"></span></p>
     </div>
 
     <script>
-        // Simulate adding coins (this should be connected to a backend for real users)
-        function addCoins() {
-            const username = document.getElementById("username").value;
-            const coins = parseInt(document.getElementById("coins").value, 10);
+        let coins = 10;
 
-            if (username && coins > 0) {
-                document.getElementById("status-message").innerText = `Added ${coins} coins to ${username}!`;
+        // Generate unique username per device using localStorage
+        function generateUsername() {
+            let username = localStorage.getItem("username");
+            if (!username) {
+                username = "User" + Math.floor(Math.random() * 100000);
+                localStorage.setItem("username", username);
+            }
+            document.getElementById("user-username").innerText = username;
+        }
+        generateUsername();
+
+        // Play game and deduct one coin
+        function playGame() {
+            if (coins > 0) {
+                coins -= 1;
+                document.getElementById("user-coins").innerText = coins;
+                const result = Math.random() > 0.5 ? "GREEN" : "RED";
+                document.getElementById("result-message").innerText = `Result: ${result}`;
             } else {
-                document.getElementById("status-message").innerText = "Please enter valid details!";
+                alert("You have no more coins! Contact admin to add coins.");
             }
         }
     </script>
