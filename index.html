@@ -1,115 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>User Panel - Coin System</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f4;
-    }
-    .header {
-      background-color: #4CAF50;
-      color: white;
-      text-align: center;
-      padding: 15px 0;
-    }
-    .container {
-      width: 80%;
-      margin: 20px auto;
-    }
-    .card {
-      background: white;
-      margin: 20px 0;
-      padding: 20px;
-      border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-    .btn {
-      display: inline-block;
-      padding: 10px 15px;
-      background-color: #4CAF50;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-      text-align: center;
-    }
-    .btn:hover {
-      background-color: #45a049;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-    }
-    table, th, td {
-      border: 1px solid #ddd;
-    }
-    th, td {
-      padding: 10px;
-      text-align: left;
-    }
-    th {
-      background-color: #4CAF50;
-      color: white;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .admin-panel {
+            margin: 20px auto;
+        }
+
+        input, button {
+            padding: 10px;
+            margin: 5px;
+            font-size: 16px;
+        }
+    </style>
 </head>
 <body>
-  <div class="header">
-    <h1>User Panel</h1>
-  </div>
-
-  <div class="container">
-    <!-- User Info -->
-    <div class="card">
-      <h2>Welcome, [Username]</h2>
-      <p><strong>Current Coin Balance:</strong> <span style="color: green;">100 Coins</span></p>
+    <h1>Admin Panel</h1>
+    <div class="admin-panel">
+        <h3>Add Coins to User</h3>
+        <input type="text" id="username" placeholder="Enter Username" />
+        <input type="number" id="coins" placeholder="Enter Coins to Add" />
+        <button onclick="addCoins()">Add Coins</button>
+        <p id="status-message"></p>
     </div>
 
-    <!-- Purchase Coins -->
-    <div class="card">
-      <h3>Purchase Coins</h3>
-      <form action="/purchase" method="POST">
-        <label for="amount">Select Amount:</label>
-        <select id="amount" name="amount">
-          <option value="50">50 Coins - $5</option>
-          <option value="100">100 Coins - $10</option>
-          <option value="200">200 Coins - $20</option>
-        </select>
-        <br><br>
-        <button class="btn" type="submit">Purchase</button>
-      </form>
-    </div>
+    <script>
+        // Simulate adding coins (this should be connected to a backend for real users)
+        function addCoins() {
+            const username = document.getElementById("username").value;
+            const coins = parseInt(document.getElementById("coins").value, 10);
 
-    <!-- Transaction History -->
-    <div class="card">
-      <h3>Transaction History</h3>
-      <table>
-        <tr>
-          <th>Date</th>
-          <th>Description</th>
-          <th>Amount</th>
-        </tr>
-        <tr>
-          <td>2024-12-10</td>
-          <td>Purchased Coins</td>
-          <td>+50</td>
-        </tr>
-        <tr>
-          <td>2024-12-08</td>
-          <td>Redeemed Service</td>
-          <td>-30</td>
-        </tr>
-      </table>
-    </div>
-  </div>
-
-  <footer style="text-align: center; padding: 10px; background-color: #4CAF50; color: white;">
-    &copy; 2024 Coin System
-  </footer>
+            if (username && coins > 0) {
+                document.getElementById("status-message").innerText = `Added ${coins} coins to ${username}!`;
+            } else {
+                document.getElementById("status-message").innerText = "Please enter valid details!";
+            }
+        }
+    </script>
 </body>
 </html>
